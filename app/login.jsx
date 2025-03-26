@@ -4,6 +4,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { LinearGradient } from "expo-linear-gradient";
 import { Text, TextInput, TouchableOpacity, Image } from "react-native";
+import { useRouter } from "expo-router";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -15,6 +16,7 @@ const LoginSchema = Yup.object().shape({
 });
 
 const LoginScreen = () => {
+  const router = useRouter();
   return (
     <LinearGradient colors={["#343231", "#181616"]} style={styles.container}>
       <Image source={require("../assets/images/logo.jpg")} style={styles.logo} />
@@ -73,7 +75,7 @@ const LoginScreen = () => {
 
               <View style={styles.loginLink}>
                 <Text style={styles.loginText}>Don't have an account?</Text>
-                <TouchableOpacity onPress={() => router.push('/(tabs)/index')}>
+                <TouchableOpacity onPress={() => router.push('../signup')}>
                   <Text style={styles.signupLink}> Sign Up</Text>
                 </TouchableOpacity>
               </View>
